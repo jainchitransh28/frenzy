@@ -1,5 +1,6 @@
-{{ 'section-footer.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="{{ 'component-list-payment.css' | asset_url }}" media="all" onload="this.media='all'">
+
+<link rel="stylesheet" data-href="{{ 'section-footer.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-list-payment.css' | asset_url }}">
 <noscript>{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}</noscript>
 
 
@@ -359,7 +360,7 @@
         }
 </style>
 {% endif %}
-<script type="text/javascript">
+<script type="lazyload_int">
     function initDropdownColumnsFooter(){
         var footerColumnTitle = document.querySelectorAll('[data-toggle-column-footer]');
         if (footerColumnTitle.length > 0) {

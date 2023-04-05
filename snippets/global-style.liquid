@@ -1,13 +1,13 @@
-{{ 'animated.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-banner.css' | asset_url | stylesheet_tag }}
-{{ 'component-quick-cart.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}" media="print" onload="this.media='all'">
+<data-link rel="stylesheet" data>
+<link rel="stylesheet" data-href="{{ 'component-card.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-loading-banner.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-quick-cart.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'vendor.css' | asset_url }}">
 <noscript>{{ 'vendor.css' | asset_url | stylesheet_tag }}</noscript>
 
 {% if settings.product_card_layout == '02' %}
-	{{ 'component-card-02.css' | asset_url | stylesheet_tag }}
+	<link rel="stylesheet" data-href="{{ 'component-card-02.css' | asset_url }}">
 {% elsif settings.product_card_layout == '03' %}
 	{{ 'component-card-03.css' | asset_url | stylesheet_tag }}
 {% elsif settings.product_card_layout == '04' %}
@@ -19,17 +19,17 @@
 {% endif %}
 
 {%- unless request.page_type == 'product' -%}
-	<link rel="stylesheet" href="{{ 'component-product-form.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-review.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-badge.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-share.css' | asset_url }}" media="print" onload="this.media='all'">
+	<link rel="stylesheet" data-href="{{ 'component-product-form.css' | asset_url }}">
+	<link rel="stylesheet" data-href="{{ 'component-review.css' | asset_url }}">
+	<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}">
+	<link rel="stylesheet" data-href="{{ 'component-badge.css' | asset_url }}">
+	<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}">
+	<link rel="stylesheet" data-href="{{ 'component-share.css' | asset_url }}">
 {%- endunless -%}
 
-<link rel="stylesheet" href="{{ 'component-newsletter.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-list-social.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" data-href="{{ 'component-newsletter.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-slider.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-list-social.css' | asset_url }}">
 
 
 {%- unless request.page_type == 'product' -%}

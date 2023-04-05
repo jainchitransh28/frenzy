@@ -1,6 +1,6 @@
-{{ 'vendor.js' | asset_url | script_tag }}
-{{ 'global.js' | asset_url | script_tag }}
-{{ 'lazysizes.min.js' | asset_url | script_tag }}
+<script type="lazyload_int" data-src="{{ 'vendor.js' | asset_url }}"></script>
+<script type="lazyload_int" data-src="{{ 'global.js' | asset_url }}"></script>
+<script type="lazyload_int" data-src="{{ 'lazysizes.min.js' | asset_url }}"></script>
 
 {%- if settings.show_quick_search -%}
     <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
@@ -42,7 +42,7 @@
     endif
 %}
 
-<script>
+<script type="lazyload_int">
     window.lazySizesConfig = window.lazySizesConfig || {};
     lazySizesConfig.loadMode = 1;
     window.lazySizesConfig.init = false;

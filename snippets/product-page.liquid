@@ -396,7 +396,7 @@
   {% endif %}
 </script>
 {%- if product_image_popup == 'fancybox' -%}
-    <link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" data-href="{{ 'component-fancybox.css' | asset_url }}">
     <noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
 {%- endif -%}
 <div class="product-details product-default{% if has_sidebar %} has-sidebar{% endif %}" data-section-id="{{ section.id }}" data-section-type="product" id="ProductSection-{{ section.id }}" data-has-combo="{{ has_product_combo }}" data-image-opo>
@@ -505,8 +505,9 @@
                                                             {% if product_image_popup == 'fancybox' %} data-fancybox="images" href="{{ media.preview_image | img_url: 'master' }}" {% endif %}
                                                         >
                                                             <img id="product-featured-image-{{ media.id }}"
-                                                                srcset="{{ media.preview_image | img_url: 'master' }}"
-                                                                src="{{ media | img_url: 'master' }}"
+                                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+                                                                data-srcset="{{ media.preview_image | img_url: '600x' }}"
+                                                                data-src="{{ media | img_url: '600x' }}"
                                                                 alt="{{ media.preview_image.alt | escape }}"
                                                                 title="{{ media.preview_image.alt | escape }}"
                                                                 sizes="auto"
@@ -707,8 +708,8 @@
                                             {%- case media.media_type -%}
                                                 {%- when 'image' -%}
                                                     <div class="productView-thumbnail{% if show_variant_image_group %} filter-{{ media.alt | handle }}{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
-                                                        <a class="productView-thumbnail-link animated-loading" href="javascript:void(0)" data-image="{{ media | img_url: 'large' }}">
-                                                            <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                        <a class="productView-thumbnail-link" href="javascript:void(0)" data-image="{{ media | img_url: 'large' }}">
+                                                            <img src="{{ media | img_url: '120x' }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
                                                         </a>
                                                     </div>
                                                 {%- when 'external_video' -%}
@@ -1382,7 +1383,7 @@
     %}
 {%- endif -%}
 
-<script type="text/javascript">
+<script type="lazyload_int">
   $(document).ready(function() {
     setTimeout(function () {
       var html_1 = $(".productView-desc").html();
@@ -1432,7 +1433,7 @@
 {% endif %} -->
 
                                           
-<script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload_int" data-src="{{ 'variants.js' | asset_url }}"></script>
 {%- if show_sticky_add_to_cart -%}
     <script src="{{ 'sticky-add-to-cart.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
@@ -1447,7 +1448,7 @@
     <script src="{{ 'gsap.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 {%- if product_image_popup == 'fancybox' -%}
-    <script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+    <script type="lazyload_int" data-src="{{ 'fancybox.js' | asset_url }}"></script>
 {%- endif -%}
 
 {% render 'schema',

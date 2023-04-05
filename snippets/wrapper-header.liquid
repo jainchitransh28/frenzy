@@ -43,8 +43,8 @@
 {%- endif -%}
 
 {% unless settings.enable_currencies %}
-    <script src='//cdn.shopify.com/s/javascripts/currencies.js' defer="defer"></script>
-    <script src="{{ 'jquery.currencies.min.js' | asset_url }}" defer="defer"></script>
+    <script type="lazyload_int" data-src='//cdn.shopify.com/s/javascripts/currencies.js'></script>
+    <script type="lazyload_int" data-src="{{ 'jquery.currencies.min.js' | asset_url }}"></script>
     <script type="text/javascript">
         let shopCurrency="{{ shop.currency }}"
     </script>

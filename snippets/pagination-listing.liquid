@@ -12,7 +12,8 @@
     - class: {String} (optional) Appended to container element's class attribute
 {% endcomment %}
 
-{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+<link data-href="{{ 'component-pagination.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
+
 
 {%- if paginate.parts.size > 0 -%}
     <div class="{{ class | default: 'pagination-wrapper' }}">

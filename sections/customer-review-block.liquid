@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-review-block.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" data-href="{{ 'component-review-block.css' | asset_url }}">
 <noscript>{{ 'component-review-block.css' | asset_url | stylesheet_tag }}</noscript>
 {% if section.blocks.size > 0 %}
     {% assign review_style = section.settings.section_style %}

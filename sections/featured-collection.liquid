@@ -1,6 +1,6 @@
 {% if section.blocks.size > 0 %}
 {%- assign swipe = section.settings.featured_collection_block_swipe_on_mobile -%}
-<link rel="stylesheet" href="{{ 'component-featured-collection.css' | asset_url }}" media="all" onload="this.media='all'">
+<link rel="stylesheet" data-href="{{ 'component-featured-collection.css' | asset_url }}">
 <noscript>{{ 'component-featured-collection.css' | asset_url | stylesheet_tag }}</noscript>
 
 <div id="featured-collection" class="featured-collection-block section-block-{{section.id}}">
@@ -37,7 +37,7 @@
                       <div class="collection-img-box">
                           <a href="{{ collection.url }}" title="{{ collection.title }}">
                               <div class="collection-img-boxInner">
-                                <img src="{{ collection.image.src | collection_img_url: 'original' }}" alt="{{ collection.title }}">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ collection.image.src | collection_img_url: '120x' }}" alt="{{ collection.title }}">
                               </div>
                               <h3>{{ collection.title }}</h3>
                           </a>
