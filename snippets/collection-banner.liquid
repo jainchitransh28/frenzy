@@ -1,0 +1,32 @@
+<div class="collection-banner collection-banner--parallax"
+    {% if collection.metafields.custom.add_banner_image != blank %}
+      style="background-image: url({{ collection.metafields.custom.add_banner_image | img_url: '1920x' }}); background-color: {{collection.metafields.custom.collection_primary_color}};"
+    {% else %}
+      {% for block in section.blocks %}
+      style="background-image: url({{ block.settings.default_collectio_image | img_url: '1920x' }}); background-color: 04121d;"
+      {% endfor %}
+    {% endif %}  
+  >
+  <div class="collection-title-Overlay"
+    {% if collection.metafields.custom.add_banner_image_opacity != blank %}
+      style="opacity: 0.{{ collection.metafields.custom.add_banner_image_opacity }};"
+    {% endif %}  
+    ></div>
+    <div class="container">
+      <div class="collection-title-Wrap">
+          {% if collection.image.src != blank %}
+            <div class="collection-img-boxInner">
+              <img src="{{ collection.image.src | collection_img_url: 'original' }}" alt="{{ collection.title }}">
+            </div>
+          {% endif %} 
+          <h1>
+              {{ collection.title | escape }}
+          </h1>
+        {% if collection.metafields.custom.collection_tagline != blank %}
+          <h3>{{ collection.metafields.custom.collection_tagline }}</h3>
+        {% endif %}  
+          
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,286 @@
+<div class="menu-heading-mobile halo-sidebar-header">
+    <span class="title">{{ 'general.common.menu' | t }}</span>
+    <button type="button" class="halo-sidebar-close" data-menu-close-sidebar aria-label="{{ 'general.common.close' | t }}">
+        {% render 'icon-close' %}
+        {{ 'general.common.close' | t }}
+    </button>
+</div>
+
+<ul class="{{ listClass }}" role="list">
+    {%- liquid
+        if search.terms != blank and template.suffix == 'ajax_mega_menu'
+            assign hide_menu_load = false
+            assign menu = linklists[search.terms].links
+        elsif template.suffix contains 'landing'
+            assign hide_menu_load = false
+            assign menu = linklists[page.handle].links
+        else
+            if section.settings.menu != blank
+                assign menu = section.settings.menu.links
+            endif
+            if template contains 'index' or search.terms == '' or search.terms == blank
+                assign hide_menu_load = false
+            else
+                assign hide_menu_load = true
+            endif
+        endif
+    -%}
+    {%- for link in menu -%}
+        {%- liquid
+            assign sale_item_lv1 = section.settings.sale_item_1 | split: "," | strip | downcase | handle
+            assign sale_item_lv2 = section.settings.sale_item_2 | split: "," | strip | downcase | handle
+            assign sale_item_lv3 = section.settings.sale_item_3 | split: "," | strip | downcase | handle
+            assign title = link.title | escape | downcase | handle
+            if section.settings.show_label
+                assign show_label_blink = section.settings.show_label_blink
+                assign new_label_1 = section.settings.new_label_1 | split: "," | strip | downcase | handle
+                assign new_label_2 = section.settings.new_label_2 | split: "," | strip | downcase | handle
+                assign new_label_3 = section.settings.new_label_3 | split: "," | strip | downcase | handle
+                assign sale_label_1 = section.settings.sale_label_1 | split: "," | strip | downcase | handle
+                assign sale_label_2 = section.settings.sale_label_2 | split: "," | strip | downcase | handle
+                assign sale_label_3 = section.settings.sale_label_3 | split: "," | strip | downcase | handle
+                assign hot_label_1 = section.settings.hot_label_1 | split: "," | strip | downcase | handle
+                assign hot_label_2 = section.settings.hot_label_2 | split: "," | strip | downcase | handle
+                assign hot_label_3 = section.settings.hot_label_3 | split: "," | strip | downcase | handle
+            endif
+            for menuItem in section.blocks
+
+                
+
+      
+                assign check_menu = false
+                assign item = menuItem.settings.item | escape | downcase | handle
+                case item
+                    when title
+                        assign check_menu = true
+                        assign block_style = menuItem.type
+                        assign column = menuItem.settings.column
+
+                        assign container = menuItem.settings.layout_block
+
+                        assign size_container = menuItem.settings.header_custom_width_size
+                        
+                        assign show_banner_1 = menuItem.settings.show_banner_1
+                        if show_banner_1
+                            assign banner_1 = menuItem.settings.banner_1
+                            assign banner_url_1 = menuItem.settings.banner_url_1
+                        endif
+                        assign show_banner_2 = menuItem.settings.show_banner_2
+                        if show_banner_2
+                            assign banner_2 = menuItem.settings.banner_2
+                            assign banner_url_2 = menuItem.settings.banner_url_2
+                        endif
+                        assign show_banner_3 = menuItem.settings.show_banner_3
+                        if show_banner_3
+                            assign banner_3 = menuItem.settings.banner_3
+                            assign banner_url_3 = menuItem.settings.banner_url_3
+                        endif
+                        assign show_banner_4 = menuItem.settings.show_banner_4
+                        if show_banner_4
+                            assign banner_4 = menuItem.settings.banner_4
+                            assign banner_url_4 = menuItem.settings.banner_url_4
+                        endif
+                        assign show_banner_5 = menuItem.settings.show_banner_5
+                        if show_banner_5
+                            assign banner_5 = menuItem.settings.banner_5
+                            assign banner_url_5 = menuItem.settings.banner_url_5
+                        endif
+                    
+                        assign show_az_brand = menuItem.settings.show_az_brand
+                        if show_az_brand
+                            assign az_brand_title = menuItem.settings.az_brand_title
+                            assign az_brand_link_text = menuItem.settings.az_brand_link_text
+                            assign az_brand_url = menuItem.settings.az_brand_url
+                        endif
+                        assign show_product = menuItem.settings.show_product
+                        if show_product
+                            assign product_title = menuItem.settings.product_title
+                            assign product_collection = menuItem.settings.product_collection
+                            assign product = all_products[product_collection]
+                            assign product_limit = menuItem.settings.product_limit
+                            assign product_per_row = menuItem.settings.product_per_row
+                        endif
+                        
+                        assign menu_text_left = menuItem.settings.menu_text_left
+                        assign menu_text_left_sale = menuItem.settings.menu_text_left_sale | split: "," | strip | downcase | handle
+                        assign mega_tyle = menuItem.settings.mega_tyle
+                        assign product_limit = menuItem.settings.product_limit
+
+                        assign collection1 = menuItem.settings.collection1
+                        assign collection2 = menuItem.settings.collection2
+                        assign collection3 = menuItem.settings.collection3
+                        assign collection4 = menuItem.settings.collection4
+                        assign collection5 = menuItem.settings.collection5
+                        assign collection6 = menuItem.settings.collection6
+                        assign collection7 = menuItem.settings.collection7
+                        assign collection8 = menuItem.settings.collection8
+                        assign collection9 = menuItem.settings.collection9
+                        assign collection10 = menuItem.settings.collection10
+                        assign collection11 = menuItem.settings.collection11
+                        assign collection12 = menuItem.settings.collection12
+                        assign collection13 = menuItem.settings.collection13
+                        assign collection14 = menuItem.settings.collection14
+                        assign collection15 = menuItem.settings.collection15
+                        assign collection16 = menuItem.settings.collection16
+                        assign collection17 = menuItem.settings.collection17
+                        assign collection18 = menuItem.settings.collection18
+                        assign collection19 = menuItem.settings.collection19
+                        assign collection20 = menuItem.settings.collection20
+                        assign collection21 = menuItem.settings.collection21
+                        assign collection22 = menuItem.settings.collection22
+                        assign collection23 = menuItem.settings.collection23
+                        assign collection24 = menuItem.settings.collection24
+                        assign collection25 = menuItem.settings.collection25
+                        assign collection26 = menuItem.settings.collection26
+                        assign collection27 = menuItem.settings.collection27
+                        assign collection28 = menuItem.settings.collection28
+                        assign collection29 = menuItem.settings.collection29
+                        assign collection30 = menuItem.settings.collection30
+                        assign collection31 = menuItem.settings.collection31
+                        assign collection32 = menuItem.settings.collection32
+                        assign collection33 = menuItem.settings.collection33
+                        assign collection34 = menuItem.settings.collection34
+                        assign collection35 = menuItem.settings.collection35
+                        assign collection36 = menuItem.settings.collection36
+                        assign collection37 = menuItem.settings.collection37
+                        assign collection38 = menuItem.settings.collection38
+                        assign collection39 = menuItem.settings.collection39
+                        assign collection40 = menuItem.settings.collection40
+                        assign collection41 = menuItem.settings.collection41
+                        assign collection42 = menuItem.settings.collection42
+                        assign collection43 = menuItem.settings.collection43
+                        assign collection44 = menuItem.settings.collection44
+                        assign collection45 = menuItem.settings.collection45
+                        assign collection46 = menuItem.settings.collection46
+                        assign collection47 = menuItem.settings.collection47
+                        assign collection48 = menuItem.settings.collection48
+                        assign collection49 = menuItem.settings.collection49
+                        assign collection50 = menuItem.settings.collection50
+      
+                        break
+                endcase
+            endfor
+        -%}
+        {%- if section.settings.show_megamenu and check_menu -%}
+            {% render 'halo-megamenu'
+                collection1: collection1,
+                collection2: collection2,
+                collection3: collection3,
+                collection4: collection4,
+                collection5: collection5,
+                collection6: collection6,
+                collection7: collection7,
+                collection8: collection8,
+                collection9: collection9,
+                collection10: collection10,
+                collection11: collection11,
+                collection12: collection12,
+                collection13: collection13,
+                collection14: collection14,
+                collection15: collection15,
+                collection16: collection16,
+                collection17: collection17,
+                collection18: collection18,
+                collection19: collection19,
+                collection20: collection20,
+                collection21: collection21,
+                collection22: collection22,
+                collection23: collection23,
+                collection24: collection24,
+                collection25: collection25,
+                collection26: collection26,
+                collection27: collection27,
+                collection28: collection28,
+                collection29: collection29,
+                collection30: collection30,
+                collection31: collection31,
+                collection32: collection32,
+                collection33: collection33,
+                collection34: collection34,
+                collection35: collection35,
+                collection36: collection36,
+                collection37: collection37,
+                collection38: collection38,
+                collection39: collection39,
+                collection40: collection40,
+                collection41: collection41,
+                collection42: collection42,
+                collection43: collection43,
+                collection44: collection44,
+                collection45: collection45,
+                collection46: collection46,
+                collection47: collection47,
+                collection48: collection48,
+                collection49: collection49,
+                collection50: collection50,
+                container: container,
+                size_container: size_container,
+                link: link,
+                title: title,
+                sale_item_lv1: sale_item_lv1,
+                sale_item_lv2: sale_item_lv2,
+                sale_item_lv3: sale_item_lv3,
+                show_label_blink: show_label_blink,
+                new_label_1: new_label_1,
+                new_label_2: new_label_2,
+                new_label_3: new_label_3,
+                sale_label_1: sale_label_1,
+                sale_label_2: sale_label_2,
+                sale_label_3: sale_label_3,
+                hot_label_1: hot_label_1,
+                hot_label_2: hot_label_2,
+                hot_label_3: hot_label_3,
+                block_style: block_style,
+                column: column,
+                show_banner_1: show_banner_1,
+                banner_1: banner_1,
+                banner_url_1: banner_url_1,
+                show_banner_2: show_banner_2,
+                banner_2: banner_2,
+                banner_url_2: banner_url_2,
+                show_banner_3: show_banner_3,
+                banner_3: banner_3,
+                banner_url_3: banner_url_3,
+                show_banner_4: show_banner_4,
+                banner_4: banner_4,
+                banner_url_4: banner_url_4,
+                show_banner_5: show_banner_5,
+                banner_5: banner_5,
+                banner_url_5: banner_url_5,
+                show_az_brand: show_az_brand,
+                az_brand_title: az_brand_title,
+                az_brand_link_text: az_brand_link_text,
+                az_brand_url: az_brand_url,
+                show_product: show_product,
+                product_title: product_title,
+                product_collection: product_collection,
+                product: product,
+                product_limit: product_limit,
+                product_per_row: product_per_row,
+                menu_text_left: menu_text_left,
+                menu_text_left_sale: menu_text_left_sale,
+                collection_product: product_collection,
+                product_limit: product_limit,
+                mega_tyle: mega_tyle
+            %}
+        {%- else -%}
+            {% render 'halo-dropdownmenu'
+                link: link,
+                title: title,
+                sale_item_lv1: sale_item_lv1,
+                sale_item_lv2: sale_item_lv2,
+                sale_item_lv3: sale_item_lv3,
+                show_label_blink: show_label_blink,
+                new_label_1: new_label_1,
+                new_label_2: new_label_2,
+                new_label_3: new_label_3,
+                sale_label_1: sale_label_1,
+                sale_label_2: sale_label_2,
+                sale_label_3: sale_label_3,
+                hot_label_1: hot_label_1,
+                hot_label_2: hot_label_2,
+                hot_label_3: hot_label_3,
+            %}
+        {%- endif -%}
+    {%- endfor -%}
+</ul>

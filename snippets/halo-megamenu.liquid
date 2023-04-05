@@ -1,0 +1,581 @@
+{%- liquid
+    if menu_text_left != blank
+        if block_style == "megamenu_style_5" or block_style == "megamenu_style_4"
+            assign site_text_width = 100 | divided_by: column | append: '%'
+            assign column = column | minus: 1
+        endif
+    endif
+-%}
+
+<li class="menu-lv-item menu-lv-1 text-left has-megamenu dropdown{% if sale_item_lv1 contains title %} menu-sale{% endif %} block_layout--{{container}}">
+    {%- if link.links != blank -%}
+        <a class="menu-lv-1__action header__menu-item list-menu__item link focus-inset menu_mobile_link" href="{{ link.url }}">
+            {% if check_vertical == true %}
+                {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' | file_url %}
+                <span class="icon-img">
+                    <img src="{{ img }}" alt="{{ link.title }}" onError="style.display = 'none';">
+                </span>
+            {% endif %}
+
+            <span class="text{% if link.child_active %} header__active-menu-item{% endif %}">
+                {{ link.title | escape }}
+            </span>
+            <span class="icon-dropdown" data-toggle-menu-mb="">
+                {% render 'icon-caret-right' %}
+            </span>
+            {%- if new_label_1 contains title -%}
+                <span class="label new-label">
+                    {{ 'general.navigation.new_label' | t }}
+                </span>
+            {%- elsif sale_label_1 contains title -%}
+                <span class="label sale-label">
+                    {{ 'general.navigation.sale_label' | t }}
+                </span>
+            {%- elsif hot_label_1 contains title -%}
+                <span class="label hot-label">
+                    {{ 'general.navigation.hot_label' | t }}
+                </span>
+            {%- endif -%}
+        </a>
+        {%- if block_style == "megamenu_style_1" -%}
+            <div class="menu-dropdown custom-scrollbar {{block_style}}">
+                <div class="{%- if container == 'full' -%}container-full{%- else -%}container{%- endif -%}" 
+                            {% if container != 'full' %}style="--container_size: {{ size_container | append: 'px' }}"{% endif %}>
+                    <div class="menu-dropdown__wrapper">
+                        <div class="nav-title-mobile text-center">
+                            <span class="icon-dropdown">
+                                {% render 'icon-arrow-nav' %}
+                            </span>
+                            {{ link.title | escape }}
+                        </div>
+                        <div class="site-nav navigation_all_mobile">
+                            <div class="site-nav-list ">
+                                <a href="{{ link.url }}" class="site-nav-title menu-lv-2">
+                                    <span>
+                                        {{ 'general.navigation.go_to' | t }} {{ link.title | escape }}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-dropdown__column column-{{ column }}{% unless show_banner_1 or show_product %} column-full{% endunless %} {% unless show_product %}no_show_product{% endunless %}{% unless show_banner_1 %} no_show_banner{% endunless %}" data-masonry='{ "itemSelector": "[data-gridItem]", "columnWidth": ".grid-sizer" }'>
+                            <div class="grid-sizer"></div>
+                           
+                                {% assign childtitle = childlink.title | escape | downcase | handle %}
+                                <div class="site-nav dropdown{% if show_label_blink %} menu-lv-blink{% endif %}" data-gridItem>
+                                    <div class="site-nav-list">
+                                      <div class="site_nav_list_dev">
+                                        {%- if collection1 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection1.url }}" title="{{ collection1.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection1.image.src | collection_img_url: 'original' }}" alt="{{ collection1.title }}">
+                                                  </div>
+                                                  <h3>{{ collection1.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection2 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection2.url }}" title="{{ collection2.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection2.image.src | collection_img_url: 'original' }}" alt="{{ collection2.title }}">
+                                                  </div>
+                                                  <h3>{{ collection2.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection3 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection3.url }}" title="{{ collection3.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection3.image.src | collection_img_url: 'original' }}" alt="{{ collection3.title }}">
+                                                  </div>
+                                                  <h3>{{ collection3.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection4 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection4.url }}" title="{{ collection4.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection4.image.src | collection_img_url: 'original' }}" alt="{{ collection4.title }}">
+                                                  </div>
+                                                  <h3>{{ collection4.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection5 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection5.url }}" title="{{ collection5.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection5.image.src | collection_img_url: 'original' }}" alt="{{ collection5.title }}">
+                                                  </div>
+                                                  <h3>{{ collection5.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection6 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection6.url }}" title="{{ collection6.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection6.image.src | collection_img_url: 'original' }}" alt="{{ collection6.title }}">
+                                                  </div>
+                                                  <h3>{{ collection6.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection7 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection7.url }}" title="{{ collection7.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection7.image.src | collection_img_url: 'original' }}" alt="{{ collection7.title }}">
+                                                  </div>
+                                                  <h3>{{ collection7.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection8 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection8.url }}" title="{{ collection8.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection8.image.src | collection_img_url: 'original' }}" alt="{{ collection8.title }}">
+                                                  </div>
+                                                  <h3>{{ collection8.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection9 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection9.url }}" title="{{ collection9.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection9.image.src | collection_img_url: 'original' }}" alt="{{ collection9.title }}">
+                                                  </div>
+                                                  <h3>{{ collection9.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection10 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection10.url }}" title="{{ collection10.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection10.image.src | collection_img_url: 'original' }}" alt="{{ collection10.title }}">
+                                                  </div>
+                                                  <h3>{{ collection10.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection11 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection11.url }}" title="{{ collection11.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection11.image.src | collection_img_url: 'original' }}" alt="{{ collection11.title }}">
+                                                  </div>
+                                                  <h3>{{ collection11.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection12 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection12.url }}" title="{{ collection12.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection12.image.src | collection_img_url: 'original' }}" alt="{{ collection12.title }}">
+                                                  </div>
+                                                  <h3>{{ collection12.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection13 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection13.url }}" title="{{ collection13.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection13.image.src | collection_img_url: 'original' }}" alt="{{ collection13.title }}">
+                                                  </div>
+                                                  <h3>{{ collection13.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection14 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection14.url }}" title="{{ collection14.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection14.image.src | collection_img_url: 'original' }}" alt="{{ collection14.title }}">
+                                                  </div>
+                                                  <h3>{{ collection14.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection15 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection15.url }}" title="{{ collection15.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection15.image.src | collection_img_url: 'original' }}" alt="{{ collection15.title }}">
+                                                  </div>
+                                                  <h3>{{ collection15.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection16 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection16.url }}" title="{{ collection16.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection16.image.src | collection_img_url: 'original' }}" alt="{{ collection16.title }}">
+                                                  </div>
+                                                  <h3>{{ collection16.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection17 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection17.url }}" title="{{ collection17.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection17.image.src | collection_img_url: 'original' }}" alt="{{ collection17.title }}">
+                                                  </div>
+                                                  <h3>{{ collection17.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection18 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection18.url }}" title="{{ collection18.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection18.image.src | collection_img_url: 'original' }}" alt="{{ collection18.title }}">
+                                                  </div>
+                                                  <h3>{{ collection18.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection19 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection19.url }}" title="{{ collection19.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection19.image.src | collection_img_url: 'original' }}" alt="{{ collection19.title }}">
+                                                  </div>
+                                                  <h3>{{ collection19.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection20 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection20.url }}" title="{{ collection20.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection20.image.src | collection_img_url: 'original' }}" alt="{{ collection20.title }}">
+                                                  </div>
+                                                  <h3>{{ collection20.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection21 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection21.url }}" title="{{ collection21.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection21.image.src | collection_img_url: 'original' }}" alt="{{ collection21.title }}">
+                                                  </div>
+                                                  <h3>{{ collection21.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection22 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection22.url }}" title="{{ collection22.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection22.image.src | collection_img_url: 'original' }}" alt="{{ collection22.title }}">
+                                                  </div>
+                                                  <h3>{{ collection22.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection23 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection23.url }}" title="{{ collection23.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection23.image.src | collection_img_url: 'original' }}" alt="{{ collection23.title }}">
+                                                  </div>
+                                                  <h3>{{ collection23.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection24 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection24.url }}" title="{{ collection24.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection24.image.src | collection_img_url: 'original' }}" alt="{{ collection24.title }}">
+                                                  </div>
+                                                  <h3>{{ collection24.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection25 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection25.url }}" title="{{ collection25.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection25.image.src | collection_img_url: 'original' }}" alt="{{ collection25.title }}">
+                                                  </div>
+                                                  <h3>{{ collection25.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection26 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection26.url }}" title="{{ collection26.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection26.image.src | collection_img_url: 'original' }}" alt="{{ collection26.title }}">
+                                                  </div>
+                                                  <h3>{{ collection26.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection27 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection27.url }}" title="{{ collection27.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection27.image.src | collection_img_url: 'original' }}" alt="{{ collection27.title }}">
+                                                  </div>
+                                                  <h3>{{ collection27.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection28 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection28.url }}" title="{{ collection28.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection28.image.src | collection_img_url: 'original' }}" alt="{{ collection28.title }}">
+                                                  </div>
+                                                  <h3>{{ collection28.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection29 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection29.url }}" title="{{ collection29.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection29.image.src | collection_img_url: 'original' }}" alt="{{ collection29.title }}">
+                                                  </div>
+                                                  <h3>{{ collection29.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection30 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection30.url }}" title="{{ collection30.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection30.image.src | collection_img_url: 'original' }}" alt="{{ collection30.title }}">
+                                                  </div>
+                                                  <h3>{{ collection30.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection31 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection31.url }}" title="{{ collection31.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection31.image.src | collection_img_url: 'original' }}" alt="{{ collection31.title }}">
+                                                  </div>
+                                                  <h3>{{ collection31.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection32 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection32.url }}" title="{{ collection32.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection32.image.src | collection_img_url: 'original' }}" alt="{{ collection32.title }}">
+                                                  </div>
+                                                  <h3>{{ collection32.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection33 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection33.url }}" title="{{ collection33.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection33.image.src | collection_img_url: 'original' }}" alt="{{ collection33.title }}">
+                                                  </div>
+                                                  <h3>{{ collection33.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection34 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection34.url }}" title="{{ collection34.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection34.image.src | collection_img_url: 'original' }}" alt="{{ collection34.title }}">
+                                                  </div>
+                                                  <h3>{{ collection34.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection35 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection35.url }}" title="{{ collection35.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection35.image.src | collection_img_url: 'original' }}" alt="{{ collection35.title }}">
+                                                  </div>
+                                                  <h3>{{ collection35.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection36 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection36.url }}" title="{{ collection36.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection36.image.src | collection_img_url: 'original' }}" alt="{{ collection36.title }}">
+                                                  </div>
+                                                  <h3>{{ collection36.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection37 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection37.url }}" title="{{ collection37.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection37.image.src | collection_img_url: 'original' }}" alt="{{ collection37.title }}">
+                                                  </div>
+                                                  <h3>{{ collection37.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection38 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection38.url }}" title="{{ collection38.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection38.image.src | collection_img_url: 'original' }}" alt="{{ collection38.title }}">
+                                                  </div>
+                                                  <h3>{{ collection38.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection39 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection39.url }}" title="{{ collection39.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection39.image.src | collection_img_url: 'original' }}" alt="{{ collection39.title }}">
+                                                  </div>
+                                                  <h3>{{ collection39.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection40 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection40.url }}" title="{{ collection40.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection40.image.src | collection_img_url: 'original' }}" alt="{{ collection40.title }}">
+                                                  </div>
+                                                  <h3>{{ collection40.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection41 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection41.url }}" title="{{ collection41.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection41.image.src | collection_img_url: 'original' }}" alt="{{ collection41.title }}">
+                                                  </div>
+                                                  <h3>{{ collection41.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection42 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection42.url }}" title="{{ collection42.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection42.image.src | collection_img_url: 'original' }}" alt="{{ collection42.title }}">
+                                                  </div>
+                                                  <h3>{{ collection42.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection43 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection43.url }}" title="{{ collection43.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection43.image.src | collection_img_url: 'original' }}" alt="{{ collection43.title }}">
+                                                  </div>
+                                                  <h3>{{ collection43.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection44 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection44.url }}" title="{{ collection44.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection44.image.src | collection_img_url: 'original' }}" alt="{{ collection44.title }}">
+                                                  </div>
+                                                  <h3>{{ collection44.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection45 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection45.url }}" title="{{ collection45.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection45.image.src | collection_img_url: 'original' }}" alt="{{ collection45.title }}">
+                                                  </div>
+                                                  <h3>{{ collection45.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection46 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection46.url }}" title="{{ collection46.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection46.image.src | collection_img_url: 'original' }}" alt="{{ collection46.title }}">
+                                                  </div>
+                                                  <h3>{{ collection46.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection47 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection47.url }}" title="{{ collection47.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection47.image.src | collection_img_url: 'original' }}" alt="{{ collection47.title }}">
+                                                  </div>
+                                                  <h3>{{ collection47.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection48 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection48.url }}" title="{{ collection48.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection48.image.src | collection_img_url: 'original' }}" alt="{{ collection48.title }}">
+                                                  </div>
+                                                  <h3>{{ collection48.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection49 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection49.url }}" title="{{ collection49.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection49.image.src | collection_img_url: 'original' }}" alt="{{ collection49.title }}">
+                                                  </div>
+                                                  <h3>{{ collection49.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                        {%- if collection50 != blank -%}
+                                          <div class="collection-img-box">
+                                              <a href="{{ collection50.url }}" title="{{ collection50.title }}">
+                                                  <div class="collection-img-boxInner">
+                                                    <img src="{{ collection50.image.src | collection_img_url: 'original' }}" alt="{{ collection50.title }}">
+                                                  </div>
+                                                  <h3>{{ collection50.title }}</h3>
+                                              </a>
+                                          </div>
+                                        {%- endif -%}
+                                     </div> 
+                                    </div>
+                                </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
+    {%- else -%}
+        <a href="{{ link.url }}" class="menu-lv-1__action header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+            <span class="text{%- if link.current %} header__active-menu-item{% endif %}">{{ link.title | escape }}</span>
+        </a>
+    {%- endif -%}
+</li>
